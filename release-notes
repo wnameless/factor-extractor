@@ -1,2 +1,5 @@
 Version 1.0.0
 + First release
+
+Version 1.0.1
+* Fix the bug of @Factor on interfaces

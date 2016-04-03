@@ -17,16 +17,9 @@
  */
 package com.github.wnameless.factorextractor;
 
-public class FactorBean implements Id {
+public interface Id {
 
-  @Override
-  public String getId() {
-    return "id";
-  }
-
-  @Factor("num")
-  public int num() {
-    return 123;
-  }
+  @Factor("id")
+  String getId();
 
 }

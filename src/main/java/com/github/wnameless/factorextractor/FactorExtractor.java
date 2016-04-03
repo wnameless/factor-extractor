@@ -24,6 +24,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.core.annotation.AnnotationUtils;
+
 /**
  * 
  * {@link FactorExtractor} extracts factors from {@link Factor} annotated
@@ -54,8 +56,8 @@ public final class FactorExtractor {
     for (Object o : objects) {
       Class<?> testClass = o.getClass();
       for (Method m : testClass.getMethods()) {
-        if (m.isAnnotationPresent(Factor.class)) {
-          Factor factor = m.getAnnotation(Factor.class);
+        Factor factor = AnnotationUtils.findAnnotation(m, Factor.class);
+        if (factor != null) {
           try {
             factors.put(factor.value(), m.invoke(o));
           } catch (InvocationTargetException wrappedExc) {
